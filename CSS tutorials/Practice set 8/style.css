@@ -1,0 +1,62 @@
+
+
+#container{
+    background-color:#000;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    
+    
+}
+#div{
+    position: absolute;
+    
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    
+    
+    
+    animation: anima 3s linear  infinite;
+    
+
+}
+@keyframes anima{
+    0%{
+        rotate: 0deg;
+        box-shadow: 1px 5px 2px #e65c00;
+
+    }
+    50%{
+        rotate: 180deg;
+        box-shadow: 1px 5px 2px #18b201;
+    }
+    100%{
+        rotate: 360deg;
+        box-shadow: 1px 5px 2px #0456c8;
+    }
+}
+#div:before{
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 0 5px rgba(255, 255, 255,)
+}
+@keyframes animas{
+    0%{
+        justify-content: left;
+    }
+    35%{
+        justify-content: center;
+    }
+    100%{
+        justify-content: right;
+    }
+}
+

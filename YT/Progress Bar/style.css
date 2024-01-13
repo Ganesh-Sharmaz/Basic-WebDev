@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+body{
+    background-color: rgba(0, 0, 0, 0.432);
+}
+#container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 300px;
+    border-radius: 10px;
+    /* height: 400px; */
+    background-color:  #dfc3ef;
+    
+    border: 1px solid rgba(255, 255, 255, 0.445);
+    box-shadow:  0 10px 20px 0px rgba(0, 0, 0, 0.15);
+    padding: 40px;
+
+}
+#container h1{
+    text-align: center;
+    color: #003049;
+}
+#container h2{
+    color: #001e33;
+
+}
+#box{
+    margin-top: 30px;
+}
+.bar{
+    border: 1px solid rgba(0, 0, 0, 0.13);
+    margin-top: 10px;padding: 10px;
+    border-radius: 10px;
+}
+.progress{
+    margin-top: 5px;
+    width: 100%;
+    height: 14px;
+    background-color: white;
+    border-radius: 7px;
+    font-size: xx-small;
+    color: white;
+
+}
+.bar:hover{
+    background-color: #002f4934;
+    box-shadow: inset 0 3px 6px 0px rgba(0, 0, 0, 0.15);
+    #p1{
+        height: 14px;
+        width: 100%;
+        border-radius: 7px;
+        background-color: rgb(23, 124, 229);
+        padding: 0px 5px 0px 5px;
+        text-align: end;
+        animation: load 0.5s ease-in-out;
+    }
+    #p2{
+        height: 14px;
+        width: 70%;
+        border-radius: 7px;
+        background-color: rgb(23, 124, 229);
+        padding: 0px 5px 0px 5px;
+        text-align: end;
+        animation: load 0.5s ease-in-out;
+    }
+    #p3{
+        height: 14px;
+        width: 47%;
+        border-radius: 7px;
+        background-color: rgb(23, 124, 229);
+        padding: 0px 5px 0px 5px;
+        text-align: end;
+        animation: load 0.5s ease-in-out;
+    }
+    #p4{
+        height: 14px;
+        width: 60%;
+        border-radius: 7px;
+        background-color: rgb(23, 124, 229);
+        padding: 0px 5px 0px 5px;
+        text-align: end;
+        animation: load 0.5s ease-in-out;
+    }
+}
+@keyframes load {
+    from{
+        width: 0;
+    }
+    to{
+        width: max-width;
+    }
+    
+}

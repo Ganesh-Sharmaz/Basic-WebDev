@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Quiz App ~ Ganesh Sharma
+        </title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                font-family: 'poppins', sans-serif;
+                box-sizing: border-box;
+            }
+            body{
+                background: #333333;
+                
+            }
+            .app{
+                background: #FFF;
+                width: 90vh;
+                max-width: 600px;
+                margin: 100px auto 0;
+                border-radius: 10px;
+                padding: 30px;
+
+            }
+            .app h1{
+                font-size: 25px;
+                color:#001e4d;
+                font-weight: 600;
+                border-bottom: 1px solid #333;
+                padding-bottom: 30px;
+            }
+            .quiz{
+                padding: 20px 0;
+
+            }
+            .quiz h2{
+                font-size: 18px;
+                color: #001e4d;
+                font-weight: 600;
+            }
+            .btn{
+                background: #fff;
+                color: #222;
+                font-weight: 600;
+                width: 100%;
+                border: 1px solid #222;
+                padding: 10px;
+                margin: 10px 0;
+                text-align: left;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: 0.3s;
+
+
+            }
+            .btn:hover:not([disabled]){
+                background: #222;
+                color: #fff;
+
+            }
+            .btn:disabled{
+                cursor: no-drop;
+            }
+            #next-btn{
+                background: #001e4d;
+                color: #fff;
+                font-weight: 500;
+                width: 150px;
+                border: 0;
+                padding: 10px;
+                margin: 20px auto 0;
+                border-radius: 4px;
+                cursor: pointer;
+                display: block;
+                display: none;
+
+            }
+            .correct{
+                background: #98fb98;
+
+            }
+            .incorrect{
+                background: #e34234;
+            }
+            #play-again-btn {
+    background: #001e4d;
+    color: #fff;
+    font-weight: 500;
+    width: 150px;
+    border: 0;
+    padding: 10px;
+    margin: 20px auto 0;
+    border-radius: 4px;
+    cursor: pointer;
+    display: none; /* Initially hidden */
+}
+
+#play-again-btn:hover {
+    background: #222;
+}
+This CSS code sets the style for the "Play Again" button. The button will have a blue background with white text, and it will be initially hidden (display: none;). When hovered over, it will darken a bit to give feedback.
+
+You can add this CSS code to your existing <style> section in your HTML file.
+
+
+
+
+
+
+
+
+        </style>
+    </head>
+    <body>
+    <div class="app">
+        <h1>IIQ (Instagram Intelligence Quiz) </h1>
+        <div class="quiz">
+            <h2 id="question">Question goes here</h2>
+            <div id="answer-buttons">
+                <button class="btn"> Answer 1</button>
+                <button class="btn"> Answer 2</button>
+                <button class="btn"> Answer 3</button>
+                <button class="btn"> Answer 4</button>
+            </div>
+            <button id="next-btn">Next</button>
+            <button id="play-again-btn" style="display:none;">Play Again</button>
+        </div>
+
+    </div>
+    <script>
+        const questions = [
+            {
+                question: "Who became famous after 75 Hard Challenge on Instagram",
+                answers: [
+                    { text: "Bhuvan Bam", correct: false},
+                    { text: "Ankit Baiyanpuriya", correct: true},
+                    { text: "Yatinder Singh", correct: false},
+                    { text: "Singha", correct: false},
+
+                    
+                ]
+            },
+            {
+                question: "who said 'humpe toh hai hi nawwww 🫲😜🫱' ",
+                answers: [
+                    { text: "Ashish Chanachalani", correct: false},
+                    { text: "Ankush Bahuguna", correct: false},
+                    { text: "Arpit Bala", correct: true},
+                    { text: "Aniket Mahato", correct: false},
+
+                    
+                ]
+            },
+            {
+                question: "__ bhai ke aage koi bol skta hai kyaaaaa",
+                answers: [
+                    { text: "Dharmendra", correct: false},
+                    { text: "Rajiv", correct: false},
+                    { text: "Ankit", correct: false},
+                    { text: "Elvish", correct: true},
+
+                    
+                ]
+            },
+            {
+                question: "delulu is the __",
+                answers: [
+                    { text: "Hilulu", correct: false},
+                    { text: "Fukulu", correct: false},
+                    { text: "nolulu", correct: false},
+                    { text: "Solulu", correct: true},
+
+                    
+                ]
+            }
+        ];
+
+        const questionElement = document.getElementById("question");
+        const answerButtons = document.getElementById("answer-buttons");
+        
+        const nextButton = document.getElementById("next-btn");
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        function startQuiz(){
+    currentQuestionIndex = 0;
+    score = 0;
+    nextButton.style.display = "none"; // Hide Next button
+    playAgainButton.style.display = "none"; // Hide Play Again button
+    resetState();
+    showQuestion();
+}
+
+        function showQuestion(){
+    resetState();
+    nextButton.disabled = true; // Disable Next button
+
+    let currentQuestion = questions[currentQuestionIndex];
+    let questionNo = currentQuestionIndex + 1;
+    questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
+
+    currentQuestion.answers.forEach(answer => {
+        const button = document.createElement("button");
+        button.innerHTML = answer.text;
+        button.classList.add("btn");
+        answerButtons.appendChild(button);
+        button.addEventListener("click",selectAnswer);
+        if(answer.correct){
+            button.dataset.correct = answer.correct;
+        }
+    });
+}
+
+
+        function resetState(){
+            nextButton.style.display = "none";
+            while(answerButtons.firstChild){
+                answerButtons.removeChild(answerButtons.firstChild);
+            }
+        }
+
+
+        function selectAnswer(e){
+    const selectedBtn = e.target;
+    const isCorrect = selectedBtn.dataset.correct === "true";
+    if(isCorrect){
+        selectedBtn.classList.add("correct");
+        score++;
+
+    }else{
+        selectedBtn.classList.add("incorrect");
+    }
+    Array.from(answerButtons.children).forEach(button => {
+        if(button.dataset.correct === "true"){
+            button.classList.add("correct");
+
+        }
+        button.disabled = true;
+    });
+
+    nextButton.style.display = "block"; // Display Next button
+    nextButton.disabled = false; // Enable Next button
+}
+
+
+        const playAgainButton = document.getElementById("play-again-btn");
+
+                  playAgainButton.addEventListener("click", () => {
+                startQuiz();
+});
+  
+
+        function showScore(){
+            resetState();
+            questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
+            nextButton.style.display = "none";
+            playAgainButton.style.display = "block";
+
+            
+        }
+
+
+
+
+
+        function handleNextButton(){
+            currentQuestionIndex++;
+            if(currentQuestionIndex < questions.length){
+                showQuestion();
+
+            }else{
+                showScore();
+            }
+        }
+
+
+
+        nextButton.addEventListener("click", ()=>{
+            if(currentQuestionIndex < questions.length){
+                handleNextButton();
+            }
+        });
+        playAgainButton.addEventListener("click", () => {
+    startQuiz();
+    playAgainButton.style.display = "none";
+    nextButton.style.display = "block";
+});
+
+ 
+
+
+
+        startQuiz();
+    </script>
+
+    </body>
+    
+
+    
+</html>

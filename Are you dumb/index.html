@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Are You Dumb</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    font-family: 'anton', sans-serif;
+}
+
+body {
+    font-family: 'anton', sans-serif;
+    background-color: #dfc3ef;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    width: 80%; /* Use percentage for better responsiveness */
+    max-width: 800px; /* Set a maximum width */
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    position: relative;
+    color: #ffffff;
+    background: #001e33;
+}
+
+.wrapper h1 {
+    font-size: 24px; /* Adjust font size for smaller screens */
+    letter-spacing: 1px;
+}
+
+.wrapper .answers {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically on small screens */
+    margin-top: 20px;
+}
+
+.wrapper .answers .btn {
+    margin-bottom: 10px; /* Add space between buttons on small screens */
+    padding: 10px 16px;
+    background-color: #7f77d0;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.confirmation {
+    display: none;
+}
+
+.confirmation h2 {
+    font-size: 40px; /* Adjust font size for smaller screens */
+}
+
+/* Media query for screens smaller than 600px */
+@media screen and (max-width: 600px) {
+    .wrapper {
+        width: 90%; /* Adjust width for smaller screens */
+    }
+
+    .wrapper h1 {
+        font-size: 20px; /* Further reduce font size for very small screens */
+    }
+
+    .wrapper .answers .btn {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+
+    .confirmation h2 {
+        font-size: 30px; /* Adjust font size for smaller screens */
+    }
+}
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="question">
+            <h1>Are You Dumb?</h1>
+            <div class="answers">
+                <button type="button" class="btn" id="yes">Yes!</button>
+                <button type="button" class="btn" id="no">No!</button>
+            </div>
+        </div>
+        <div class="confirmation">
+            <h2>Yes, you are!</h2>
+        </div>
+    </div>
+
+    
+
+   <script>
+    
+        const wrapper = document.querySelector('.wrapper');
+        const question = document.querySelector('.question');
+        const yesBtn = document.querySelector('#yes');
+        const noBtn = document.querySelector('#no');
+        const confirmation = document.querySelector('.confirmation');
+
+        const yesAnswerMethod = () => {
+            question.style.display = 'none';
+            confirmation.style.display = 'block';
+        }
+
+         const noAnswerMethod = () => {
+            noBtn.style.position = 'absolute';
+            yesBtn.style.boxShadow = 'text-shadow: 0px 2px 5px rgba(0, 0, 0, 1  );'
+
+    
+            const xPosition = Math.floor(Math.random() * (wrapper.clientWidth - noBtn.clientWidth));
+            const yPosition = Math.floor(Math.random() * (wrapper.clientHeight - noBtn.clientHeight));
+
+            noBtn.style.left = `${xPosition}px`; // Corrected syntax
+            noBtn.style.top = `${yPosition}px`;
+
+
+        }
+
+        yesBtn.addEventListener('click', yesAnswerMethod);
+        noBtn.addEventListener('click', noAnswerMethod);
+    
+
+    </script>
+ 
+    
+</body>
+</html>

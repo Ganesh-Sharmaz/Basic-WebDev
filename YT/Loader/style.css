@@ -1,0 +1,37 @@
+body,html{
+    height: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#container{
+    width: 300px;
+    height: 200px;
+    background-color: #003049;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#loader{
+    width: 40px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 50%;
+    border-top: 2px solid black;
+    animation: load 2s linear infinite;
+
+
+}
+
+@keyframes load{
+    from{
+        rotate: 0deg;
+
+    }
+    to{
+        rotate: 360deg;
+    }
+}

@@ -1,0 +1,8 @@
+body--> rgba(0, 0, 0, 0.432)
+container--> #dfc3ef
+box-shadow: 0 10px 20px 0px rgba(0, 0, 0, 0.15);
+h1--> #003049
+h2--> #001e33
+bar--> rgb(23, 124, 229)
+hover -->background-color: #002f4934
+box-shadow: 0 10px 20px 0px rgba(0, 0, 0, 0.15)

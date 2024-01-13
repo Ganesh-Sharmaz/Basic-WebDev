@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="sortArray()">Sort Array</button>
+
+<script>
+
+function sortArray() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("sortedArray").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "sort.cgi", true);
+    xhttp.send();
+}
+
+</script>
+
+</body>
+</html>

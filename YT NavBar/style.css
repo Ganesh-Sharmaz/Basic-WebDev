@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#nav{
+    height: 56px;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+    padding: 16px 16px 0px 16px;
+}
+#search{
+    border-radius: 10px;
+    box-shadow: none;
+    padding: 5px;
+    
+}

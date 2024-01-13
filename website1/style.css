@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+
+}
+body{
+    background: #a02020;
+    display: flex;
+    justify-content: center;
+    
+    
+}
+.container{
+    background: #FFF;
+                width: 90vh;
+                max-width: 600px;
+                margin: 100px auto 0;
+                border-radius: 10px;
+                padding: 30px;
+                height: 500px;
+                display: flex;
+                justify-content: center;
+
+    
+}
+.box{
+    background: #660707;
+                width: 50%;
+                max-width: 600px;
+                margin: 100px auto 0;
+                border-radius: 10px;
+                padding: 30px;
+                height: 50%;
+}
+.box h1{
+    text-decoration: dashed;
+    color: bisque;
+    text-emphasis-color: #cdcdcd;
+    margin-top: 30%;
+    text-align: center;
+    
+
+}

@@ -1,0 +1,5 @@
+user_inp = str(input("enter list items with space: "))
+list_item = user_inp.split()
+sorted_list = sorted(list_item)
+print(sorted_list)
+print(sorted_list[-1::-1])

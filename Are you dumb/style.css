@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'anton', sans-serif;
+}
+body{
+    font-family: 'anton', sans-serif;
+    background-color: #dfc3ef;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    width: 800px;
+    box-shadow: 0px 0px 10px 0 px rgba(0, 0, 0, 0.5);
+    position: relative;
+    color: #ffffff;
+    background: #001e33;
+
+}
+.wrapper h1{
+    font-size: 30px;
+    letter-spacing: 2px;
+}
+.wrapper .answers{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.wrapper .answers .btn{
+    padding: 10px 16px;
+    background-color: #7f77d0;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+.confirmation{
+    display: none;
+}
+.confirmation h2{
+    font-size: 80px;
+}

@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+body,html{
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.61);
+
+    text-align: center;
+}
+h1{
+    background-color: Black;
+    color: white;
+    text-align: center;
+    line-height: center;
+    padding: 20px;
+    font-size: 2em;
+    
+}
+.choices{
+    margin-top: 4em;
+    margin-bottom: 1em;
+    display: flex;
+    gap: 2.2em;
+    justify-content: center;
+
+}
+.choice{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 8em;
+    width: 8em;
+    background-color: pink;
+    border-radius: 50%;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+
+}
+.choice:hover{
+    border: 3px solid black;
+    box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+
+}
+.score{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5em;
+    line-height: 1em;
+    font-size: 2em;
+    color: white;
+    padding: 30px;
+}
+.result{
+    font-size: 2em;
+    margin-top: 30px;
+    background-color: black;
+    color: white;
+    display: inline-block;
+    padding: 20px;
+    border-radius: 10px;
+}
+p{
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    *{
+        margin: 0;
+        padding: 0;
+
+    }
+
+    
+    h1{
+        font-size: 33px;
+        text-align: center;
+    }
+    .choices{
+        margin-top: 100px;
+        margin-bottom: 70px;
+    }
+    
+    .choice{
+        
+        font-size: 12px;
+        
+    }
+    .result{
+        width: 300px;
+    }
+
+
+    
+}

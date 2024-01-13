@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API</title>
+    <link rel="stylesheet" href="styel.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&display=swap');
+        *{
+    margin: 0;
+    padding: 0;
+    font-family: 'Kaisei HarunoUmi', serif;
+
+}
+body,html{
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-image: url("https://wallpapers.com/images/high/attack-on-titan-levi-ackerman-bloody-fan-art-dhi2qi23bqxq4ekr.webp");
+    /* background-color: rgba(255, 0, 0, 0.74); */
+
+}
+.container{
+    width: 60%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: #CE2029;
+    color: #F5F5DC;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.432);
+}
+h1{
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #CCCCCC;
+    
+}
+.quote-box{
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+.details{
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    color: black;
+    font-weight: 550;
+
+    
+}
+
+.next{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#new{
+    width: 70px;
+    height: 30px;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 550;
+    background-color: rgba(0, 0, 0, 0.418);
+    color: white;
+    
+}
+#new:hover{
+    box-shadow: inset 0px 3px 8px rgba(0, 0, 0, 0.253);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px){
+    .container{
+        width: 80%;
+    }
+    h1{
+        font-size: 40px;
+    }
+    .quote-box{
+        font-size: 20px;
+    }
+    .details{
+        font-size: 14px;
+    }
+    
+}
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Anime Quotes</h1>
+        <div class="quote-box"></div>
+        <div class="details">
+            <div class="anime-name"></div>
+            <!-- <input type="text" id="animeName"  placeholder="Search Anime"> -->
+            <div class="character"></div>
+            
+        </div>
+        <div class="next">
+            <button id="new">Next</button>
+        </div>
+        
+        
+    </div>
+
+    <script>
+
+
+        const URL = 'https://animechan.xyz/api/random/anime?title=attack+on+titan'
+
+// const options = {
+// 	method: 'GET',
+// 	headers: {
+// 		'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
+// 		'X-RapidAPI-Host': 'numbersapi.p.rapidapi.com'
+// 	}
+// };
+
+
+
+
+
+        const getQuote = async () => {
+            // try {
+            //     const response = await fetch(url, options);
+            //     const result = await response.text();
+            //     console.log(result);
+            // } catch (error) {
+            //     console.error(error);
+            // }
+            
+            let response = await fetch(URL);
+            console.log(response);
+            let quote = await response.json();
+            console.log(quote)
+            quoteBox.innerText = quote.quote
+            character.innerText = "Character - " + quote.character
+            animeName.innerText = "Anime - " + quote.anime
+        }
+
+        const quoteBox = document.querySelector(".quote-box")
+        const character = document.querySelector(".character")
+        const animeName = document.querySelector(".anime-name")
+        const next = document.querySelector("#new")
+
+        newQuote = () => {
+            getQuote();
+        }
+
+        next.addEventListener('click',newQuote)
+        getQuote();
+    </script>
+    
+</body>
+</html>

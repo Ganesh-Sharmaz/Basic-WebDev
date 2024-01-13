@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Papers and Scissors</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+body,html{
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.61);
+
+    text-align: center;
+}
+h1{
+    background-color: Black;
+    color: white;
+    text-align: center;
+    line-height: center;
+    padding: 20px;
+    font-size: 2em;
+    
+}
+.choices{
+    margin-top: 4em;
+    margin-bottom: 1em;
+    display: flex;
+    gap: 2.2em;
+    justify-content: center;
+
+}
+.choice{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 8em;
+    width: 8em;
+    background-color: pink;
+    border-radius: 50%;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+
+}
+.choice:hover{
+    border: 3px solid black;
+    box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+
+}
+.score{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5em;
+    line-height: 1em;
+    font-size: 2em;
+    color: white;
+    padding: 30px;
+}
+.result{
+    font-size: 2em;
+    margin-top: 30px;
+    background-color: black;
+    color: white;
+    display: inline-block;
+    padding: 20px;
+    border-radius: 10px;
+}
+p{
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    *{
+        margin: 0;
+        padding: 0;
+
+    }
+
+    
+    h1{
+        font-size: 33px;
+        text-align: center;
+    }
+    .choices{
+        margin-top: 100px;
+        margin-bottom: 70px;
+    }
+    
+    .choice{
+        
+        font-size: 12px;
+        
+    }
+    .result{
+        width: 300px;
+    }
+
+
+    
+}
+    </style>
+    
+</head>
+<body>
+    <h1>Rock, Papers and Scissors</h1>
+    <div class="choices">
+        <div class="choice"id = "rock">ROCK</div>
+        <div class="choice"id = "paper">PAPER</div>
+        <div class="choice"id = "scissors">SCISSORS</div>
+        
+    </div>
+    <div class="score">
+        <div class="user-score"><h4 id="us">0</h4>
+            <p>You</p>
+        </div>
+        <div class="comp-score"><h4 id="cs">0</h4>
+                <p>Comp</p>
+        </div>
+    </div>
+    <div class="result" id="msg">
+        Select - Rock, Paper or Scissors
+    </div>
+
+    
+
+
+    <script >
+        let userScore = 0;
+let compScore = 0;
+
+let msg = document.querySelector("#msg");
+
+const userScoreH = document.querySelector("#us")
+const compScoreH = document.querySelector("#cs")
+
+const choices = document.querySelectorAll(".choice");
+
+showWinner = (userWin, userChoice, compChoice) => {
+    if (userWin == true){
+        userScore++;
+        userScoreH.innerText = userScore
+        msg.innerText = `You win!, Your ${userChoice} beats ${compChoice}`
+
+    }
+    else{
+        compScore++;
+        compScoreH.innerText = compScore
+
+        msg.innerText = `You lose!, ${compChoice} beats ${userChoice}`
+
+    }
+}
+
+gameDraw = () =>{
+    msg.innerText = "Game Draw, Try Again"
+}
+
+genCompChoice = () => {
+    const options = ['rock', 'paper', 'scissors'];
+    const ranIdx = Math.floor(Math.random() * 3);
+    return options[ranIdx];
+    
+}
+
+playGame = (userChoice) => {
+
+    //generate comp choice
+    const compChoice = genCompChoice();
+    
+    if (userChoice === compChoice && compChoice === userChoice){
+        gameDraw();
+    }
+    else{
+        let userWin = true;
+        
+        if(userChoice === 'rock'){
+            userWin = compChoice ==='paper' ? false : true;
+        }
+        else if (userChoice === 'paper'){
+            userWin = compChoice === 'scissors' ? false : true;
+        }
+        else{
+            userWin = compChoice === 'rock' ? false : true;
+        }
+
+        showWinner(userWin, userChoice, compChoice);
+
+    }
+    
+}
+
+choices.forEach((choice) => {
+    choice.addEventListener('click', () => {
+        const userChoice = choice.getAttribute("id")
+        playGame(userChoice);
+    })
+})
+
+    </script>
+</body>
+</html>

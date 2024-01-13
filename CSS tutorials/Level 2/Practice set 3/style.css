@@ -1,0 +1,14 @@
+*{
+    padding: 10px;
+    
+   
+}
+.container{
+    height: 500px;
+    width: 500px;
+    padding: 2px;
+    background-color: brown;
+    margin-left: 25%;
+    
+    
+}
